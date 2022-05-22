@@ -7,7 +7,9 @@ def app():
     with txt1:
         st.markdown("### About Dataset:")
         st.markdown("###### Sample Sales Data set is downloaded from kaggle. The data includes Order Info, Sales, Customer and Shipping information. In this project I used the Sales data set to provide sales analysis, the main key performance indicators, shipping status monitoring, detailed analysis on countries location as a practice for a streamlit project. In addition to the analytics part, I have added a sales forecast section where the user    can predict the future sales")
+        st.markdown('##')
         st.markdown("## Data Upload")
+        st.markdown('##')
         # Upload the dataset and save as csv
         st.markdown("#### Upload the sales data set in a csv or excel file for analysis.") 
         st.write("\n")
@@ -16,7 +18,8 @@ def app():
         st.image(image)
 ###### Upload data in csv or excel format ######
     # Code to read a single file 
-    
+    st.markdown('##')
+    st.markdown('##')
     upload, fig = st.columns(2)
     with upload:
         uploaded_file = st.file_uploader("Choose a file", type = ['csv', 'xlsx'])
