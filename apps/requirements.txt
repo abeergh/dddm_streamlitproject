@@ -13,3 +13,4 @@ streamlit-multipage==0.0.18
 streamlit-option-menu==0.3.2
 geographiclib==1.52
 geopy==2.2.0
+pmdarima==1.8.5
