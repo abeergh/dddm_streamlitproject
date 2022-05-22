@@ -6,4 +6,4 @@ pandas==1.4.0
 plotly==5.8.0
 streamlit-option-menu == 0.3.2
 millify == 0.1.1
-folium == 1.4.0
+folium == 0.1.4
