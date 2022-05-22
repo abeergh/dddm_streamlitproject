@@ -11,7 +11,7 @@ def app():
   with open ('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
   ###### Load the csv file from data folder where we saved the upload and save it in dataframe ######
-  data = pd.read_csv('..//data//sales_data.csv')
+  data = pd.read_csv('data//sales_data.csv')
   data_selection = data
   ###### Create side bar filters #####
   # Create country filter, that includes list of unique countries

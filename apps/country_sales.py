@@ -1,4 +1,3 @@
-from email.policy import default
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -18,7 +17,7 @@ def app():
   with open ('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
   ###### Load the csv file from data folder where we saved the upload and save it in dataframe ######
-  data = pd.read_csv('..//data//sales_data.csv')
+  data = pd.read_csv('data//sales_data.csv')
   # Group data by country and total sales
   ############################# The following code was used to extract latitude and longitude from country field in the data, 
   # but after running the script manytimes I got an error that there is limitation in iteration, 
@@ -62,7 +61,7 @@ def app():
   #sales_by_country["Latitude"] = latitude
   ##################################################################
   # Load the dataframe with lat and lon values saved in data folder
-  sales_by_country = pd.read_csv('..//data//geoinfo.csv')
+  sales_by_country = pd.read_csv('data//geoinfo.csv')
   # Create to side by side graphs 
   fig1, fig2 = (st.columns(2))
   with fig1:

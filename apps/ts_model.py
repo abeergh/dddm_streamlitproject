@@ -1,19 +1,12 @@
-from ctypes import alignment
-from email.policy import default
-from tkinter import CENTER
-from turtle import color
-from matplotlib.pyplot import margins
 import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 import matplotlib.pylab as plt
-import seaborn as sns
 import pmdarima as pm
 import statsmodels.api as sm
-from statsmodels.graphics.tsaplots import plot_acf
-from statsmodels.tsa.seasonal import seasonal_decompose
+from statsmodels.tsa.arima.model import ARIMA
 
 def app():
   st.subheader("Sales Forecasting App")
@@ -22,7 +15,7 @@ def app():
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 ######### Time series model to predict future sales ##########
     # Load data from data folder
-  data = pd.read_csv('..//data//sales_data.csv', parse_dates=True)
+  data = pd.read_csv('data//sales_data.csv', parse_dates=True)
   #  Group data by date and sales
   data_ts = data.groupby(by=['ORDERDATE']).sum()[['SALES']].reset_index()
   data_ts['ORDERDATE'] = pd.to_datetime(data_ts['ORDERDATE'])
@@ -65,7 +58,6 @@ def app():
   ###### Split the data into train and test (70/30) ######
   train_set, test_set= np.split(data_ts_monthly, [int(.70 *len(data_ts_monthly))])
   ###### Fit ARIMA model ######
-  from statsmodels.tsa.arima.model import ARIMA
   model = ARIMA(train_set["SALES"], order=(2,1,3))
   model = model.fit()
   model.summary()
