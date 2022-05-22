@@ -1,4 +1,3 @@
-from matplotlib.ft2font import HORIZONTAL
 import streamlit as st
 from streamlit_option_menu import option_menu
 import pandas as pd
@@ -12,8 +11,23 @@ def app():
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
   ###### Load the csv file from data folder where we saved the upload and save it in dataframe ######
   data = pd.read_csv('data//sales_data.csv')
-  data_selection = data
   ###### Create side bar filters #####
+    ###### Create side bar filters #####
+  # Create country filter, that includes list of unique countries
+  country = st.sidebar.multiselect("Country:",
+                                          data['COUNTRY'].unique(),
+                                          default = data['COUNTRY'].unique())
+  # Create country filter, that includes list of unique years
+  year = st.sidebar.multiselect("Year",
+                                  data['YEAR_ID'].unique(),
+                                  default = data['YEAR_ID'].unique())
+  # Create country filter, that includes list of unique status
+  status = st.sidebar.multiselect("Status:", 
+                                  data['STATUS'].unique(),
+                                  data['STATUS'].unique())
+  # Filter the dashboard based on the user input/selected filters
+  data_selection = data.query(
+      "COUNTRY == @country & YEAR_ID == @year & STATUS == @status")
   # Create country filter, that includes list of unique countries
   ##### Define KPI's variables #####
     #caluclate the total sales amount
