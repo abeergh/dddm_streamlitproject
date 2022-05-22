@@ -1,4 +1,3 @@
-from email.policy import default
 from matplotlib.ft2font import HORIZONTAL
 import streamlit as st
 from streamlit_option_menu import option_menu
@@ -7,13 +6,6 @@ import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 from millify import millify # used to format numbers in a proper way to read
-from pycountry_convert import country_alpha2_to_continent_code, country_name_to_country_alpha2#function to convert to alpah2 country codes and continents
-from geopy.exc import GeocoderTimedOut
-from geopy.geocoders import Nominatim
-import folium
-from streamlit_folium import st_folium
-from streamlit_folium import folium_static 
-
 def app():
   ###### Import CSS style file to apply formatting ######
   with open ('style.css') as f:
